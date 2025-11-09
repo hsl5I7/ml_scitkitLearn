@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
 
 # Download and prepare the data
 data_root = "https://github.com/ageron/data/raw/main/"
@@ -15,8 +15,8 @@ lifesat.plot(kind='scatter', grid=True,
 plt.axis([23_500, 62_500, 4, 9])
 plt.show()
 
-# Select a linear model
-model = LinearRegression()
+# Select a model
+model = KNeighborsRegressor(n_neighbors=3)
 
 # Train the model
 model.fit(X, y)
