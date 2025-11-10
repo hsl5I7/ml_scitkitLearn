@@ -22,3 +22,13 @@ housing_full = load_housing_data()
 # import matplotlib.pyplot as plt
 # housing_full.hist(bins=50, figsize=(12,8)) # 각 수치형 열에 대한 히스토그램 생성
 # plt.show() # 히스토그램 출력
+
+# creating test set
+import numpy as np
+def shuffle_and_split_data(data, test_ratio, rng):
+    shuffled_indices = rng.permutation(len(data)) # 데이터의 인덱스를 무작위로 섞음/셔플
+    test_set_size = int(len(data) * test_ratio) # 테스트 세트의 크기 계산
+    test_indices = shuffled_indices[:test_set_size] # 테스트 세트의 인덱스 선택
+    train_indices = shuffled_indices[test_set_size:] # 훈련 세트의 인덱스 선택, iloc: short for integer location
+    return data.iloc[train_indices], data.iloc[test_indices] # 훈련 세트와 테스트 세트 반환
+
